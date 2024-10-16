@@ -3,8 +3,8 @@
 (** SPDX-License-Identifier: LGPL-2.1-or-later *)
 
 type const =
-  | Int of int (** 1 *)
-  | Bool of bool (** true *)
+  | Const_int of int (** 1 *)
+  | Const_bool of bool (** true *)
 [@@deriving show { with_path = false }]
 
 type typ =
@@ -45,7 +45,7 @@ and decl = bool * string * typ option * expr * typ option (* TODO: explain *)
 
 type toplevel =
   | Let_decl of decl (** let a = 1 *)
-  | Expr of expr (** printf "abc" *)
+  | Expr of expr (** print_int 123 *)
 [@@deriving show { with_path = false }]
 
 type program = toplevel list [@@deriving show { with_path = false }]

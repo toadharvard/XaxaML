@@ -1,6 +1,23 @@
 (library
  (name XaxaML)
  (public_name XaxaML.Lib)
- (modules Ast)
+ (modules Ast Parser)
+ (libraries base angstrom)
+ (inline_tests)
  (preprocess
-  (pps ppx_deriving.show)))
+  (pps ppx_expect ppx_deriving.show)))
+
+(include_subdirs unqualified)
+
+(library
+ (name tests)
+ (modules Parser_tests)
+ (libraries XaxaML)
+ (inline_tests)
+ (preprocess
+  (pps ppx_expect ppx_deriving.show)))
+
+(env
+ (dev
+  (flags
+   (:standard -w -32))))

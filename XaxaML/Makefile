@@ -1,7 +1,12 @@
-PHONY: build test lint
+.PHONY: all build fmt tests lint
+
+all: build fmt tests lint
 
 build:
+	dune build
 
+fmt:
+	dune fmt
 
 tests:
 	dune runtest
