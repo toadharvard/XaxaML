@@ -19,4 +19,13 @@
  (name XaxaML)
  (synopsis "Compiler for XaXaML")
  (description "Compiler for the XaXa Mini Language")
- (depends ocaml dune))
+(depends
+  dune
+  angstrom
+  (ppx_inline_test :with-test)
+  ppx_expect
+  ppx_deriving
+  bisect_ppx
+  (odoc :with-doc)
+  (ocamlformat :build)
+  ))

@@ -1,4 +1,22 @@
+(library
+ (name LL)
+ (public_name XaxaML.LL)
+ (modules LL)
+ (wrapped false)
+ (libraries
+  llvm
+  llvm.analysis
+  llvm.executionengine
+  ;
+  ))
+
 (executable
- (public_name XaxaML)
  (name main)
- (libraries XaxaML))
+ (public_name XaXaML.Compiler)
+ (modules main)
+ (libraries LL XaxaML.Lib)
+ (instrumentation
+  (backend bisect_ppx)))
+
+(cram
+ (deps ./main.exe runtime.c))
